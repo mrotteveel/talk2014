@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             version="2.0">
+    <persistence-unit name="employee">
+        <class>nl.lawinegevaar.jaytalk2014.hibernate.employee.CountryEntity</class>
+        <class>nl.lawinegevaar.jaytalk2014.hibernate.employee.CustomerEntity</class>
+        <class>nl.lawinegevaar.jaytalk2014.hibernate.employee.DepartmentEntity</class>
+        <class>nl.lawinegevaar.jaytalk2014.hibernate.employee.EmployeeEntity</class>
+        <class>nl.lawinegevaar.jaytalk2014.hibernate.employee.JobEntity</class>
+        <class>nl.lawinegevaar.jaytalk2014.hibernate.employee.PhoneListEntity</class>
+        <class>nl.lawinegevaar.jaytalk2014.hibernate.employee.ProjectEntity</class>
+        <class>nl.lawinegevaar.jaytalk2014.hibernate.employee.ProjectDepartmentBudgetEntity</class>
+        <class>nl.lawinegevaar.jaytalk2014.hibernate.employee.SalaryHistoryEntity</class>
+        <class>nl.lawinegevaar.jaytalk2014.hibernate.employee.SalesEntity</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="hibernate.connection.url"
+                      value="jdbc:firebirdsql://localhost/D:/data/db/fb3/employee_talk.fdb?charSet=UTF-8"/>
+            <property name="hibernate.connection.driver_class" value="org.firebirdsql.jdbc.FBDriver"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.FirebirdDialect"/>
+            <property name="hibernate.connection.username" value="sysdba"/>
+            <property name="hibernate.connection.password" value="masterkey"/>
+        </properties>
+    </persistence-unit>
+</persistence>
