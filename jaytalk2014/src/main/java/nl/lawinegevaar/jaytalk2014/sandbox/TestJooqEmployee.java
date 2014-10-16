@@ -22,14 +22,13 @@ package nl.lawinegevaar.jaytalk2014.sandbox;
 
 import org.jooq.DSLContext;
 import org.jooq.SQLDialect;
-import org.jooq.conf.Settings;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import static nl.lawinegevaar.jaytalk2014.jooq.employee.Tables.EMPLOYEE;
 import static org.jooq.impl.DSL.using;
-import static nl.lawinegevaar.jaytalk2014.jooq.employee.Tables.*;
 
 /**
  * @author <a href="mailto:mrotteveel@users.sourceforge.net">Mark Rotteveel</a>
@@ -46,7 +45,9 @@ public class TestJooqEmployee {
 
             db.selectFrom(EMPLOYEE)
                     .where(EMPLOYEE.LAST_NAME.eq("Williams"))
-                    .fetch();
+                    .fetch()
+                    .stream()
+                    .forEach(e -> System.out.println(e.getFullName()));
         }
     }
 }
