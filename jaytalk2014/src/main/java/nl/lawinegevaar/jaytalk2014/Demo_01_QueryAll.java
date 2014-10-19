@@ -13,6 +13,13 @@ import static nl.lawinegevaar.jaytalk2014.jooq.employee.Tables.EMPLOYEE;
  */
 public class Demo_01_QueryAll extends AbstractCommonOperations {
 
+    /*
+        Equivalents of
+
+        select *
+        from "EMPLOYEE"
+     */
+
 
     /**
     <pre>
