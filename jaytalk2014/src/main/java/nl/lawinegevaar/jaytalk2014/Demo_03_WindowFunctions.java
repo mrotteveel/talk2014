@@ -35,7 +35,7 @@ public class Demo_03_WindowFunctions extends AbstractCommonOperations {
             .limit(5);
         salaryRank
             .fetch()
-            .forEach(sr -> System.out.printf("%20s %10s %s%n",
+            .forEach(sr -> System.out.printf("%-20s %10s %s%n",
                 sr.getValue(EMPLOYEE.FULL_NAME), sr.getValue(EMPLOYEE.SALARY), sr.value3()));
     });
      </pre>
@@ -56,7 +56,7 @@ public class Demo_03_WindowFunctions extends AbstractCommonOperations {
         query.getResultList()
             .forEach(o -> {
                 Object[] result = (Object[]) o;
-                System.out.printf("%20s %10s %s%n", result[0], result[1], result[2]);
+                System.out.printf("%-20s %10s %s%n", result[0], result[1], result[2]);
             });
     });
     </pre>
