@@ -1,5 +1,6 @@
 package nl.lawinegevaar.jaytalk2014;
 
+import nl.lawinegevaar.jaytalk2014.hibernate.employee.CustomerEntity;
 import nl.lawinegevaar.jaytalk2014.hibernate.employee.EmployeeEntity;
 import nl.lawinegevaar.jaytalk2014.jooq.employee.tables.records.EmployeeRecord;
 import org.jooq.DSLContext;
@@ -56,6 +57,10 @@ public abstract class AbstractCommonOperations {
 
     protected void printEmployeeRecord(EmployeeRecord employee) {
         System.out.printf("%3d %s%n", employee.getEmpNo(), employee.getFullName());
+    }
+
+    protected void printCustomerEntity(CustomerEntity customer) {
+        System.out.printf("%4d %-25s %s%n", customer.getCustNo(), customer.getCustomer(), customer.getCountry().getCountry());
     }
 
     protected void withJpa(Consumer<EntityManager> actionWithJpa) {
