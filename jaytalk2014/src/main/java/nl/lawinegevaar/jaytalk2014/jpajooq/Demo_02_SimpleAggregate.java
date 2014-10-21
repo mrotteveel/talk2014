@@ -1,9 +1,19 @@
 package nl.lawinegevaar.jaytalk2014.jpajooq;
 
+import org.jooq.Record2;
+import org.jooq.Result;
+import org.jooq.Select;
+import org.jooq.SelectJoinStep;
 import org.junit.Ignore;
 import org.junit.Test;
 
 import javax.persistence.Query;
+
+import java.math.BigDecimal;
+import java.util.List;
+
+import static nl.lawinegevaar.jaytalk2014.jooq.employee.Tables.*;
+import static org.jooq.impl.DSL.*;
 
 /**
  * @author <a href="mailto:mrotteveel@users.sourceforge.net">Mark Rotteveel</a>

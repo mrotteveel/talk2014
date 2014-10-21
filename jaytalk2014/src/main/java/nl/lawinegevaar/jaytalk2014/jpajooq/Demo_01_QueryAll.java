@@ -1,6 +1,12 @@
 package nl.lawinegevaar.jaytalk2014.jpajooq;
 
+import nl.lawinegevaar.jaytalk2014.hibernate.employee.EmployeeEntity;
 import org.junit.Test;
+
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
+
+import static nl.lawinegevaar.jaytalk2014.jooq.employee.Tables.EMPLOYEE;
 
 /**
  * @author <a href="mailto:mrotteveel@users.sourceforge.net">Mark Rotteveel</a>

@@ -1,6 +1,15 @@
 package nl.lawinegevaar.jaytalk2014.jpajooq;
 
+import org.jooq.Record3;
+import org.jooq.Select;
+import org.jooq.SelectOffsetStep;
 import org.junit.Test;
+
+import javax.persistence.Query;
+import java.math.BigDecimal;
+
+import static nl.lawinegevaar.jaytalk2014.jooq.employee.Tables.*;
+import static org.jooq.impl.DSL.*;
 
 /**
  * @author <a href="mailto:mrotteveel@users.sourceforge.net">Mark Rotteveel</a>
