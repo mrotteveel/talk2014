@@ -1,4 +1,4 @@
-package nl.lawinegevaar.jaytalk2014;
+package nl.lawinegevaar.jaytalk2014.jpajooq;
 
 import org.hibernate.dialect.FirebirdDialect;
 import org.hibernate.dialect.function.SQLFunctionTemplate;

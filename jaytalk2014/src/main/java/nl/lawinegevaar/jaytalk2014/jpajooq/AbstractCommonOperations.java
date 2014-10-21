@@ -1,4 +1,4 @@
-package nl.lawinegevaar.jaytalk2014;
+package nl.lawinegevaar.jaytalk2014.jpajooq;
 
 import nl.lawinegevaar.jaytalk2014.hibernate.employee.CustomerEntity;
 import nl.lawinegevaar.jaytalk2014.hibernate.employee.EmployeeEntity;

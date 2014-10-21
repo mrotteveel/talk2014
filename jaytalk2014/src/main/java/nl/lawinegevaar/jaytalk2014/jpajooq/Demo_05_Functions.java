@@ -1,15 +1,6 @@
-package nl.lawinegevaar.jaytalk2014;
+package nl.lawinegevaar.jaytalk2014.jpajooq;
 
-import nl.lawinegevaar.jaytalk2014.jooq.employee.tables.Department;
-import org.jooq.Record3;
-import org.jooq.Select;
-import org.jooq.SelectJoinStep;
 import org.junit.Test;
-
-import javax.persistence.Query;
-
-import static nl.lawinegevaar.jaytalk2014.jooq.employee.Tables.*;
-import static org.jooq.impl.DSL.*;
 
 /**
  * @author <a href="mailto:mrotteveel@users.sourceforge.net">Mark Rotteveel</a>

@@ -1,17 +1,6 @@
-package nl.lawinegevaar.jaytalk2014;
+package nl.lawinegevaar.jaytalk2014.jpajooq;
 
-import nl.lawinegevaar.jaytalk2014.hibernate.employee.CustomerEntity;
-import nl.lawinegevaar.jaytalk2014.jooq.employee.tables.Country;
-import nl.lawinegevaar.jaytalk2014.jooq.employee.tables.Customer;
-import org.jooq.Record3;
-import org.jooq.Select;
-import org.jooq.SelectConditionStep;
 import org.junit.Test;
-
-import javax.persistence.TypedQuery;
-
-import static nl.lawinegevaar.jaytalk2014.jooq.employee.Tables.*;
-import static org.jooq.impl.DSL.*;
 
 /**
  * @author <a href="mailto:mrotteveel@users.sourceforge.net">Mark Rotteveel</a>

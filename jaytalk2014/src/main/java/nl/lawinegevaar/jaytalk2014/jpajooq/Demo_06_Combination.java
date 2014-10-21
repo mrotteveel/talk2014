@@ -1,20 +1,6 @@
-package nl.lawinegevaar.jaytalk2014;
+package nl.lawinegevaar.jaytalk2014.jpajooq;
 
-import nl.lawinegevaar.jaytalk2014.jooq.employee.tables.Department;
-import nl.lawinegevaar.jaytalk2014.jooq.employee.tables.ProjDeptBudget;
-import nl.lawinegevaar.jaytalk2014.jooq.employee.tables.Project;
-import org.jooq.Record4;
-import org.jooq.Record5;
-import org.jooq.Select;
-import org.jooq.SelectConditionStep;
 import org.junit.Test;
-
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
-import java.util.function.Consumer;
-
-import static nl.lawinegevaar.jaytalk2014.jooq.employee.Tables.*;
-import static org.jooq.impl.DSL.*;
 
 /**
  * @author <a href="mailto:mrotteveel@users.sourceforge.net">Mark Rotteveel</a>
