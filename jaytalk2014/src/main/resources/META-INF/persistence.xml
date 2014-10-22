@@ -18,7 +18,7 @@
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
             <property name="hibernate.connection.url"
-                      value="jdbc:firebirdsql://localhost/D:/data/db/fb3/employee_talk.fdb?charSet=UTF-8"/>
+                      value="jdbc:firebirdsql://localhost/D:/data/db/fb3/employee_talk.fdb"/>
             <property name="hibernate.connection.driver_class" value="org.firebirdsql.jdbc.FBDriver"/>
             <property name="hibernate.dialect" value="nl.lawinegevaar.jaytalk2014.jpajooq.AlternativeFirebirdDialect"/>
             <property name="hibernate.connection.username" value="sysdba"/>
