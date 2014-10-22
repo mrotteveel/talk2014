@@ -148,4 +148,75 @@ public class JdbcDemo {
     public void booleanSupport_parameterStandalone() throws SQLException {
 
     }
+
+    /**
+    <pre>
+    try (
+        Connection connection = createConnection();
+        PreparedStatement pstmt = connection.prepareStatement(
+            "insert into identitytable (valuecolumn) values (?)",
+            new String[] { "identitycolumn" }
+    )
+    ) {
+        pstmt.setString(1, String.format("Value: %s", LocalDateTime.now()));
+        pstmt.executeUpdate();
+
+        try (ResultSet generatedKeys = pstmt.getGeneratedKeys()) {
+            if (generatedKeys.next()) {
+                int identityValue = generatedKeys.getInt("identitycolumn");
+                System.out.printf("Identity value: %d%n", identityValue);
+            } else {
+                fail("Expected generated key");
+            }
+        }
+    }
+    </pre>
+    */
+    @Test
+    public void getGeneratedKeysByName() throws SQLException {
+
+    }
+
+    /**
+    <pre>
+    try (
+        Connection connection = createConnection();
+        PreparedStatement pstmt = connection.prepareStatement(
+            "insert into identitytable (valuecolumn) values (?)",
+            new int[] { 1 }
+    )
+    ) {
+        pstmt.setString(1, String.format("Value: %s", LocalDateTime.now()));
+        pstmt.executeUpdate();
+
+        try (ResultSet generatedKeys = pstmt.getGeneratedKeys()) {
+            if (generatedKeys.next()) {
+                int identityValue = generatedKeys.getInt("identitycolumn");
+                System.out.printf("Identity value: %d%n", identityValue);
+            } else {
+                fail("Expected generated key");
+            }
+        }
+    }
+    </pre>
+    */
+    @Test
+    public void getGeneratedKeysByIndex() throws SQLException {
+
+    }
+
+    /**
+    <pre>
+    try (Connection connection = createConnection()) {
+        connection.setClientInfo("Key1", "Value1");
+
+        String value = connection.getClientInfo("Key1");
+        System.out.println(value);
+    }
+    </pre>
+    */
+    @Test
+    public void getClientInfo() throws SQLException {
+
+    }
 }
