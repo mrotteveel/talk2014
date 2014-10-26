@@ -1,22 +1,9 @@
 /*
- * $Id$
- * 
- * Firebird Open Source JavaEE Connector - JDBC Driver
+ * Copyright 2014 Mark Rotteveel (@avalanche1979)
  *
- * Distributable under LGPL license.
- * You may obtain a copy of the License at http://www.gnu.org/copyleft/lgpl.html
+ * Examples licensed under Creative Commons Attribution-ShareAlike 4.0 International
  *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * LGPL License for more details.
- *
- * This file was created by members of the firebird development team.
- * All individual contributions remain the Copyright (C) of those
- * individuals.  Contributors to this file are either listed here or
- * can be obtained from a source control history command.
- *
- * All rights reserved.
+ * See http://creativecommons.org/licenses/by-sa/4.0/ for details
  */
 package nl.lawinegevaar.jaytalk2014.sandbox;
 

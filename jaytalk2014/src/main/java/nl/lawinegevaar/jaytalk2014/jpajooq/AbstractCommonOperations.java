@@ -1,3 +1,11 @@
+/*
+ * Copyright 2014 Mark Rotteveel (@avalanche1979)
+ *
+ * Examples licensed under Creative Commons Attribution-ShareAlike 4.0 International
+ *
+ * See http://creativecommons.org/licenses/by-sa/4.0/ for details
+ */
+
 package nl.lawinegevaar.jaytalk2014.jpajooq;
 
 import nl.lawinegevaar.jaytalk2014.hibernate.employee.CustomerEntity;

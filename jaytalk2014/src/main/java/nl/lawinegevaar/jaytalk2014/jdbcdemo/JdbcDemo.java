@@ -1,3 +1,11 @@
+/*
+ * Copyright 2014 Mark Rotteveel (@avalanche1979)
+ *
+ * Examples licensed under Creative Commons Attribution-ShareAlike 4.0 International
+ *
+ * See http://creativecommons.org/licenses/by-sa/4.0/ for details
+ */
+
 package nl.lawinegevaar.jaytalk2014.jdbcdemo;
 
 import org.junit.Test;
@@ -36,85 +44,86 @@ public class JdbcDemo {
         return DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
     }
 
-    /**
-    <pre>
-    try (
-        Connection connection = createConnection();
-        PreparedStatement pstmt = connection.prepareStatement(
-            "insert into identitytable (valuecolumn) values (?)",
-            Statement.RETURN_GENERATED_KEYS
-    )
-    ) {
-        pstmt.setString(1, String.format("Value: %s", LocalDateTime.now()));
-        pstmt.executeUpdate();
-
-        try (ResultSet generatedKeys = pstmt.getGeneratedKeys()) {
-            if (generatedKeys.next()) {
-                int identityValue = generatedKeys.getInt("identitycolumn");
-                System.out.printf("Identity value: %d%n", identityValue);
-            } else {
-                fail("Expected generated key");
-            }
-        }
-    }
-    </pre>
-    */
     @Test
     public void getIdentityValue_simple() throws SQLException {
+        try (
+            Connection connection = createConnection();
+            PreparedStatement pstmt = connection.prepareStatement(
+                "insert into identitytable (valuecolumn) values (?)",
+                Statement.RETURN_GENERATED_KEYS
+            )
+        ) {
+            pstmt.setString(1, String.format("Value: %s", LocalDateTime.now()));
+            pstmt.executeUpdate();
 
-    }
-
-    /**
-    <pre>
-    try (
-        Connection connection = createConnection();
-        Statement stmt = connection.createStatement()
-    ) {
-        stmt.closeOnCompletion();
-
-        try (ResultSet rs = stmt.executeQuery(
-            "select identitycolumn, valuecolumn from identitytable")) {
-            while (rs.next()) {
-                System.out.printf("id: %2d, value: %s%n", rs.getInt(1), rs.getString(2));
+            try (ResultSet generatedKeys = pstmt.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    int identityValue = generatedKeys.getInt("identitycolumn");
+                    System.out.printf("Identity value: %d%n", identityValue);
+                } else {
+                    fail("Expected generated key");
+                }
             }
         }
-        System.out.println();
-        System.out.println(stmt.isClosed() ? "Statement closed" : "Statement open");
     }
-    </pre>
-    */
+
     @Test
     public void closeOnCompletion() throws SQLException {
+        try (
+            Connection connection = createConnection();
+            Statement stmt = connection.createStatement()
+        ) {
+            stmt.closeOnCompletion();
 
-    }
-
-    /**
-    <pre>
-    try (
-        Connection connection = createConnection();
-        Statement stmt = connection.createStatement();
-        ResultSet rs = stmt.executeQuery("select boolean1, boolean2 from booleantable")
-    ) {
-        while (rs.next()) {
-            System.out.printf("%s, %s (was null: %s)%n", rs.getBoolean(1), rs.getBoolean(2), rs.wasNull());
+            try (ResultSet rs = stmt.executeQuery(
+                "select identitycolumn, valuecolumn from identitytable")) {
+                while (rs.next()) {
+                    System.out.printf("id: %2d, value: %s%n", rs.getInt(1), rs.getString(2));
+                }
+            }
+            System.out.println();
+            System.out.println(stmt.isClosed() ? "Statement closed" : "Statement open");
         }
     }
-    </pre>
-    */
+
     @Test
     public void booleanSupport_getValues() throws SQLException {
-
+        try (
+            Connection connection = createConnection();
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery("select boolean1, boolean2 from booleantable")
+        ) {
+            while (rs.next()) {
+                System.out.printf("%s, %s (was null: %s)%n", rs.getBoolean(1), rs.getBoolean(2), rs.wasNull());
+            }
+        }
     }
 
-    /**
-    <pre>
-    try (
-        Connection connection = createConnection();
-        PreparedStatement pstmt = connection.prepareStatement(
-            "select boolean1, boolean2 from booleantable where boolean2 = ?")
-    ) {
-        for (boolean value : new boolean[] { false, true }) {
-            pstmt.setBoolean(1, value);
+    @Test
+    public void booleanSupport_parameterRhs() throws SQLException {
+        try (
+            Connection connection = createConnection();
+            PreparedStatement pstmt = connection.prepareStatement(
+                "select boolean1, boolean2 from booleantable where boolean2 = ?")
+        ) {
+            for (boolean value : new boolean[] { false, true }) {
+                pstmt.setBoolean(1, value);
+                try (ResultSet rs = pstmt.executeQuery()) {
+                    while (rs.next()) {
+                        System.out.printf("%s, %s (was null: %s)%n", rs.getBoolean(1), rs.getBoolean(2), rs.wasNull());
+                    }
+                }
+            }
+        }
+    }
+
+    @Test
+    public void booleanSupport_parameterStandalone() throws SQLException {
+        try (
+            Connection connection = createConnection();
+            PreparedStatement pstmt = connection.prepareStatement("select boolean1, boolean2 from booleantable where ?");
+        ) {
+            pstmt.setBoolean(1, false);
             try (ResultSet rs = pstmt.executeQuery()) {
                 while (rs.next()) {
                     System.out.printf("%s, %s (was null: %s)%n", rs.getBoolean(1), rs.getBoolean(2), rs.wasNull());
@@ -122,101 +131,60 @@ public class JdbcDemo {
             }
         }
     }
-    </pre>
-    */
-    @Test
-    public void booleanSupport_parameterRhs() throws SQLException {
 
-    }
-
-    /**
-    <pre>
-    try (
-        Connection connection = createConnection();
-        PreparedStatement pstmt = connection.prepareStatement("select boolean1, boolean2 from booleantable where ?");
-    ) {
-        pstmt.setBoolean(1, false);
-        try (ResultSet rs = pstmt.executeQuery()) {
-            while (rs.next()) {
-                System.out.printf("%s, %s (was null: %s)%n", rs.getBoolean(1), rs.getBoolean(2), rs.wasNull());
-            }
-        }
-    }
-    </pre>
-    */
-    @Test
-    public void booleanSupport_parameterStandalone() throws SQLException {
-
-    }
-
-    /**
-    <pre>
-    try (
-        Connection connection = createConnection();
-        PreparedStatement pstmt = connection.prepareStatement(
-            "insert into identitytable (valuecolumn) values (?)",
-            new String[] { "identitycolumn" }
-    )
-    ) {
-        pstmt.setString(1, String.format("Value: %s", LocalDateTime.now()));
-        pstmt.executeUpdate();
-
-        try (ResultSet generatedKeys = pstmt.getGeneratedKeys()) {
-            if (generatedKeys.next()) {
-                int identityValue = generatedKeys.getInt("identitycolumn");
-                System.out.printf("Identity value: %d%n", identityValue);
-            } else {
-                fail("Expected generated key");
-            }
-        }
-    }
-    </pre>
-    */
     @Test
     public void getGeneratedKeysByName() throws SQLException {
+        try (
+            Connection connection = createConnection();
+            PreparedStatement pstmt = connection.prepareStatement(
+                "insert into identitytable (valuecolumn) values (?)",
+                new String[] { "identitycolumn" }
+            )
+        ) {
+            pstmt.setString(1, String.format("Value: %s", LocalDateTime.now()));
+            pstmt.executeUpdate();
 
-    }
-
-    /**
-    <pre>
-    try (
-        Connection connection = createConnection();
-        PreparedStatement pstmt = connection.prepareStatement(
-            "insert into identitytable (valuecolumn) values (?)",
-            new int[] { 1 }
-    )
-    ) {
-        pstmt.setString(1, String.format("Value: %s", LocalDateTime.now()));
-        pstmt.executeUpdate();
-
-        try (ResultSet generatedKeys = pstmt.getGeneratedKeys()) {
-            if (generatedKeys.next()) {
-                int identityValue = generatedKeys.getInt("identitycolumn");
-                System.out.printf("Identity value: %d%n", identityValue);
-            } else {
-                fail("Expected generated key");
+            try (ResultSet generatedKeys = pstmt.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    int identityValue = generatedKeys.getInt("identitycolumn");
+                    System.out.printf("Identity value: %d%n", identityValue);
+                } else {
+                    fail("Expected generated key");
+                }
             }
         }
     }
-    </pre>
-    */
+
     @Test
     public void getGeneratedKeysByIndex() throws SQLException {
+        try (
+            Connection connection = createConnection();
+            PreparedStatement pstmt = connection.prepareStatement(
+                "insert into identitytable (valuecolumn) values (?)",
+                new int[] { 1 }
+            )
+        ) {
+            pstmt.setString(1, String.format("Value: %s", LocalDateTime.now()));
+            pstmt.executeUpdate();
 
+            try (ResultSet generatedKeys = pstmt.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    int identityValue = generatedKeys.getInt("identitycolumn");
+                    System.out.printf("Identity value: %d%n", identityValue);
+                } else {
+                    fail("Expected generated key");
+                }
+            }
+        }
     }
 
-    /**
-    <pre>
-    try (Connection connection = createConnection()) {
-        connection.setClientInfo("Key1", "Value1");
-
-        String value = connection.getClientInfo("Key1");
-        System.out.println(value);
-    }
-    </pre>
-    */
     @Test
     public void getClientInfo() throws SQLException {
+        try (Connection connection = createConnection()) {
+            connection.setClientInfo("Key1", "Value1");
 
+            String value = connection.getClientInfo("Key1");
+            System.out.println(value);
+        }
     }
 }

@@ -1,3 +1,11 @@
+/*
+ * Copyright 2014 Mark Rotteveel (@avalanche1979)
+ *
+ * Examples licensed under Creative Commons Attribution-ShareAlike 4.0 International
+ *
+ * See http://creativecommons.org/licenses/by-sa/4.0/ for details
+ */
+
 package nl.lawinegevaar.jaytalk2014.jpajooq;
 
 import nl.lawinegevaar.jaytalk2014.hibernate.employee.JobEntity;
@@ -5,8 +13,6 @@ import nl.lawinegevaar.jaytalk2014.hibernate.employee.SalesEntity;
 import nl.lawinegevaar.jaytalk2014.jooq.employee.tables.records.SalesRecord;
 import org.jooq.Param;
 import org.jooq.Select;
-import org.jooq.SelectConditionStep;
-import org.jooq.conf.ParamType;
 import org.junit.Test;
 
 import javax.persistence.TypedQuery;
@@ -16,8 +22,8 @@ import javax.persistence.criteria.Root;
 import javax.persistence.metamodel.EntityType;
 import javax.persistence.metamodel.SingularAttribute;
 
-import static nl.lawinegevaar.jaytalk2014.jooq.employee.Tables.*;
-import static org.jooq.impl.DSL.*;
+import static nl.lawinegevaar.jaytalk2014.jooq.employee.Tables.SALES;
+import static org.jooq.impl.DSL.param;
 
 /**
  * @author <a href="mailto:mrotteveel@users.sourceforge.net">Mark Rotteveel</a>

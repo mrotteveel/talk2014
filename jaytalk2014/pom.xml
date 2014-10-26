@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright 2014 Mark Rotteveel (@avalanche1979)
+  ~
+  ~ Examples licensed under Creative Commons Attribution-ShareAlike 4.0 International
+  ~
+  ~ See http://creativecommons.org/licenses/by-sa/4.0/ for details
+  -->
+
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -7,6 +15,12 @@
     <groupId>nl.lawinegevaar</groupId>
     <artifactId>jaytalk2014</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <licenses>
+        <license>
+            <name>Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)</name>
+            <url>http://creativecommons.org/licenses/by-sa/4.0/</url>
+        </license>
+    </licenses>
 
     <properties>
         <java.version>1.8</java.version>
