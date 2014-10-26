@@ -20,3 +20,10 @@ The examples in `nl.lawinegevaar.jaytalk2014.jdbcdemo` require two tables, the D
        boolean1 boolean not null,
        boolean2 boolean
     );
+
+Content for booleantable as used in the presentation:
+
+    INSERT INTO booleantable(boolean1, boolean2) values (true, false);
+    INSERT INTO booleantable(boolean1, boolean2) values (false, true);
+    INSERT INTO booleantable(boolean1, boolean2) values (false, NULL);
+
