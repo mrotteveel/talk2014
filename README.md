@@ -1,7 +1,9 @@
 talk2014
 ========
 
-Base code for presentation on Firebird conference Prague 2014
+Base code for presentation on Firebird conference Prague 2014.
+
+See https://prezi.com/-oggns1ehvmv/querying-firebird-with-jpa-and-jooq/ for the slides.
 
 All examples were done using Firebird 3 (snapshot version 3.0.0.31352)
 
